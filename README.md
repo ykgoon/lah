@@ -12,18 +12,18 @@ A single-page web application for translating Manglish to Oxford English using t
 
 1. Install dependencies:
 ```bash
-yay -S nodejs npm
-npm install
+npm install -g yarn
+yarn install
 ```
 
 2. Start development server:
 ```bash
-npm run dev
+yarn run dev
 ```
 
 3. Build for production:
 ```bash
-npm run build
+yarn run build
 ```
 
 4. Deploy to S3:

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manglish to Oxford English Translator</title>
+    <link rel="stylesheet" href="/src/styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Manglish to Oxford English Translator</h1>
+        
+        <div class="input-group">
+            <textarea id="inputText" placeholder="Enter Manglish text..."></textarea>
+            <textarea id="outputText" readonly placeholder="Oxford English translation..."></textarea>
+        </div>
+        
+        <button id="translateBtn">Translate</button>
+        <button id="copyBtn">Copy Translation</button>
+    </div>
+
+    <!-- Auth Modal -->
+    <div id="authModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Authentication Required</h2>
+            <input type="text" id="apiKey" placeholder="Enter API Key">
+            <button id="saveKeyBtn">Save API Key</button>
+        </div>
+    </div>
+
+    <script type="module" src="/src/main.ts"></script>
+</body>
+</html>

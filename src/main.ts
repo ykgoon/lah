@@ -10,14 +10,9 @@ const loginBtn = document.getElementById('loginBtn') as HTMLButtonElement;
 const closeModal = document.querySelector('.close') as HTMLSpanElement;
 
 // Constants
-const API_URL = import.meta.env.VITE_API_URL;
+const API_URL = import.meta.env.DEV ? "http://localhost" : import.meta.env.VITE_API_URL;
 const COOKIE_NAME = 'kt_token';
 const TOKEN_EXPIRY_DAYS = 7;
-
-// Helper function to get API endpoint based on environment
-function getApiEndpoint(path: string): string {
-    return import.meta.env.DEV ? `http://localhost${path}` : `${API_URL}${path}`;
-}
 
 // Event Listeners
 translateBtn.addEventListener('click', async () => {
@@ -32,7 +27,7 @@ translateBtn.addEventListener('click', async () => {
     }
 
     try {
-        const response = await fetch(getApiEndpoint('/api/v1/infer'), {
+        const response = await fetch(`${API_URL}/api/v1/infer`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -73,7 +68,7 @@ loginBtn.addEventListener('click', async () => {
     if (!username || !password) return;
 
     try {
-        const response = await fetch(getApiEndpoint('/api/v1/auth'), {
+        const response = await fetch(`${API_URL}/api/v1/auth`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

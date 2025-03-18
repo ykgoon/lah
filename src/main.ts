@@ -73,10 +73,14 @@ loginBtn.addEventListener('click', async () => {
     try {
         const response = await fetch(getApiEndpoint('/api/v1/auth'), {
             method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
+            headers: { 
+                'Content-Type': 'application/json',
+                'Access-Control-Allow-Origin': '*',
+                'Access-Control-Allow-Methods': 'POST, OPTIONS',
+                'Access-Control-Allow-Headers': 'Content-Type, Authorization'
+            },
             body: JSON.stringify({ username, password })
         });
-        // Fetch above runs into 405 error, CORS missing allow origin, ai!
 
         if (!response.ok) throw new Error('Login failed');
 

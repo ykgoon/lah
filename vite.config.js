@@ -5,9 +5,14 @@ export default defineConfig({
         port: 3000,
         proxy: {
             '/api': {
-                target: 'http://your-api-server.com', // Replace with your actual API URL
+                target: 'http://your-api-server.com',
                 changeOrigin: true,
                 rewrite: (path) => path.replace(/^\/api/, '')
+            },
+            '/kakitangan': {
+                target: 'http://your-api-server.com',
+                changeOrigin: true,
+                rewrite: (path) => path.replace(/^\/kakitangan/, '')
             }
         }
     },

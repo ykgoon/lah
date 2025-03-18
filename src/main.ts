@@ -35,7 +35,7 @@ translateBtn.addEventListener('click', async () => {
     }
 
     try {
-        const response = await fetch(`${API_URL}/translate`, { // Fetch from `API_URL` when running in production, but fetch from `/kakitangan` when running locally with vite ai!
+        const response = await fetch(import.meta.env.DEV ? '/kakitangan/translate' : `${API_URL}/translate`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

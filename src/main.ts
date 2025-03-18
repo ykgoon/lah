@@ -76,10 +76,9 @@ loginBtn.addEventListener('click', async () => {
             headers: {
                 'Content-Type': 'application/json'
             },
-            // CORS is handled by the server configuration
             body: JSON.stringify({ username, password })
         });
-        // 405 error remains, CORS missing allow origin, ai!
+        // 405 error when fetching from localhost, CORS missing allow origin, ai!
 
         if (!response.ok) throw new Error('Login failed');
 

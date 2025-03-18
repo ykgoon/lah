@@ -6,12 +6,12 @@ const copyBtn = document.getElementById('copyBtn') as HTMLButtonElement;
 const authModal = document.getElementById('authModal') as HTMLDivElement;
 const usernameInput = document.getElementById('username') as HTMLInputElement;
 const passwordInput = document.getElementById('password') as HTMLInputElement;
-const saveKeyBtn = document.getElementById('saveKeyBtn') as HTMLButtonElement;
+const loginBtn = document.getElementById('loginBtn') as HTMLButtonElement;
 const closeModal = document.querySelector('.close') as HTMLSpanElement;
 
 // Constants
 const API_URL = import.meta.env.VITE_API_URL;
-const COOKIE_NAME = 'manglish_translator_token';
+const COOKIE_NAME = 'lah_token';
 const TOKEN_EXPIRY_DAYS = 7;
 
 // Check for API token on load
@@ -35,7 +35,7 @@ translateBtn.addEventListener('click', async () => {
     }
 
     try {
-        const response = await fetch(`${API_URL}/translate`, {
+        const response = await fetch(`${API_URL}/translate`, { // Fetch from `API_URL` when running in production, but fetch from `/kakitangan` when running locally with vite ai!
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -59,21 +59,23 @@ copyBtn.addEventListener('click', () => {
     document.execCommand('copy');
 });
 
-saveKeyBtn.addEventListener('click', async () => {
+loginBtn.addEventListener('click', async () => {
     const username = usernameInput.value.trim();
     const password = passwordInput.value.trim();
-    
+
     if (!username || !password) return;
 
     try {
-        const response = await fetch(`${API_URL}/auth/login`, {
+        console.log(API_URL);
+
+        const response = await fetch(`${API_URL}/api/v1/auth`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ username, password })
         });
 
         if (!response.ok) throw new Error('Login failed');
-        
+
         const { token } = await response.json();
         setCookie(COOKIE_NAME, token, TOKEN_EXPIRY_DAYS);
         authModal.style.display = 'none';

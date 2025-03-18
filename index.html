@@ -11,10 +11,10 @@
         <h1>Manglish to Oxford English Translator</h1>
 
         <div class="input-group">
-            <textarea id="inputText" placeholder="Enter Manglish text..."></textarea>
+            <textarea id="inputText" placeholder="Enter Manglish text..." style="width: 100%;"></textarea>
             <button id="translateBtn">Translate</button>
             <div class="output-container">
-                <textarea id="outputText" readonly placeholder="Oxford English translation..."></textarea>
+                <textarea id="outputText" readonly placeholder="Oxford English translation..." style="width: 100%;"></textarea>
                 <button id="copyBtn" title="Copy translation">📋</button>
             </div>
         </div>
@@ -25,9 +25,16 @@
         <div class="modal-content">
             <span class="close">&times;</span>
             <h3>Kakitangan.com credential</h3>
-            <input type="text" id="username" placeholder="Email">
-            <input type="password" id="password" placeholder="Password">
+            <input type="text" id="username" placeholder="Email" style="width: 100%;">
+            <input type="password" id="password" placeholder="Password" style="width: 100%;">
             <button id="loginBtn">Login</button>
+            <script>
+                document.getElementById('password').addEventListener('keypress', function(e) {
+                    if (e.key === 'Enter') {
+                        document.getElementById('loginBtn').click();
+                    }
+                });
+            </script>
         </div>
     </div>
 

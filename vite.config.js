@@ -8,6 +8,11 @@ export default defineConfig({
                 target: 'http://app.staging.kakitangan.com',
                 changeOrigin: true,
                 methods: ['POST', 'OPTIONS', 'GET'],
+                headers: {
+                    'Access-Control-Allow-Origin': '*',
+                    'Access-Control-Allow-Methods': 'POST, OPTIONS, GET',
+                    'Access-Control-Allow-Headers': 'Content-Type, Authorization'
+                },
                 rewrite: (path) => path.replace(/^\/kakitangan/, '')
             }
         }

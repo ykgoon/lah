@@ -7,6 +7,7 @@ export default defineConfig({
             '/kakitangan': {
                 target: 'http://app.staging.kakitangan.com',
                 changeOrigin: true,
+                methods: ['POST', 'OPTIONS', 'GET'],
                 rewrite: (path) => path.replace(/^\/kakitangan/, '')
             }
         }

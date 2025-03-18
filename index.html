@@ -12,11 +12,13 @@
 
         <div class="input-group">
             <textarea id="inputText" placeholder="Enter Manglish text..."></textarea>
-            <textarea id="outputText" readonly placeholder="Oxford English translation..."></textarea>
+            <div class="output-container">
+                <textarea id="outputText" readonly placeholder="Oxford English translation..."></textarea>
+                <button id="copyBtn" title="Copy translation">📋</button>
+            </div>
         </div>
 
         <button id="translateBtn">Translate</button>
-        <button id="copyBtn">Copy Translation</button>
     </div>
 
     <!-- Auth Modal -->

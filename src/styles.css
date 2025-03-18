@@ -35,8 +35,31 @@ textarea {
     font-size: 16px;
 }
 
+.output-container {
+    position: relative;
+    width: 100%;
+}
+
+#copyBtn {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    width: 32px;
+    height: 32px;
+    padding: 5px;
+    margin: 0;
+    background-color: rgba(0, 123, 255, 0.8);
+    border-radius: 4px;
+    transition: background-color 0.2s;
+}
+
+#copyBtn:hover {
+    background-color: rgba(0, 86, 179, 0.9);
+}
+
 textarea#outputText {
     background-color: #f9f9f9;
+    padding-right: 45px;
 }
 
 button {

@@ -61,7 +61,7 @@ copyBtn.addEventListener('click', () => {
 saveKeyBtn.addEventListener('click', () => {
     const key = apiKeyInput.value.trim();
     if (!key) return;
-    
+
     setCookie(COOKIE_NAME, key, TOKEN_EXPIRY_DAYS);
     authModal.style.display = 'none';
 });

@@ -10,7 +10,7 @@ const loginBtn = document.getElementById('loginBtn') as HTMLButtonElement;
 const closeModal = document.querySelector('.close') as HTMLSpanElement;
 
 // Constants
-const API_URL = import.meta.env.DEV ? "http://localhost" : import.meta.env.VITE_API_URL;
+const API_URL = "/kakitangan" //import.meta.env.DEV ? "http://localhost" : import.meta.env.VITE_API_URL;
 const COOKIE_NAME = 'kt_token';
 const TOKEN_EXPIRY_DAYS = 7;
 
@@ -33,16 +33,20 @@ translateBtn.addEventListener('click', async () => {
                 'Content-Type': 'application/json',
                 'Authorization': `Token ${token}`
             },
-            body: JSON.stringify({ messages: [
-                {
-                    role: "developer",
-                    context: "This is a passage written in Manglish, translate it to Oxford English.",
-                },
-                {
-                    role: "user",
-                    context: text,
-                },
-            ]})
+            body: JSON.stringify({
+                model: "meta-llama/Meta-Llama-3.1-8B-Instruct-Turbo",
+                messages: [
+                    {
+                        role: "system",
+                        content: "This is a passage written in Manglish, translate it to Oxford English. Provide only the tranlated passage, no explanation necessary.",
+                    },
+                    {
+                        role: "user",
+                        content: text,
+                    }
+                ],
+                stream: false
+            })
         });
 
         if (!response.ok) throw new Error('Translation failed');

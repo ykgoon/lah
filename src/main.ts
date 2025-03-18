@@ -36,15 +36,25 @@ translateBtn.addEventListener('click', async () => {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
-                'Authorization': `Bearer ${token}`
+                'Authorization': `Token ${token}`
             },
-            body: JSON.stringify({ text })
+            body: JSON.stringify({ messages: [
+                {
+                    role: "developer",
+                    context: "This is a passage written in Manglish, translate it to Oxford English.",
+                },
+                {
+                    role: "user",
+                    context: text,
+                },
+            ]})
         });
 
         if (!response.ok) throw new Error('Translation failed');
 
         const data = await response.json();
-        outputText.value = data.translatedText;
+        outputText.value = data.choices[0].message.content;
+
     } catch (error) {
         console.error('Translation error:', error);
         outputText.value = 'Translation failed. Please try again.';

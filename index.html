@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Manglish to Oxford English Translator</title>
+    <title>Manglish to Oxford English</title>
     <link rel="stylesheet" href="/src/styles.css">
 </head>
 <body>
@@ -11,12 +11,14 @@
         <h1>Manglish to Oxford English Translator</h1>
 
         <div class="input-group">
+          <div class="output-container" style="display: flex; gap: 8px; align-items: center;">
             <textarea id="inputText" placeholder="Enter Manglish text..."></textarea>
-            <button id="translateBtn">Translate</button>
-            <div class="output-container" style="display: flex; gap: 8px; align-items: center;">
-              <textarea id="outputText" readonly placeholder="Oxford English translation..." style="flex-grow: 1;"></textarea>
-              <button id="copyBtn" title="Copy translation" style="flex-shrink: 0;">📋</button>
-            </div>
+          </div>
+          <button id="translateBtn">Translate</button>
+          <div class="output-container" style="display: flex; gap: 8px; align-items: center;">
+            <textarea id="outputText" readonly placeholder="Oxford English translation..." style="flex-grow: 1;"></textarea>
+            <button id="copyBtn" title="Copy translation" style="flex-shrink: 0;">📋</button>
+          </div>
         </div>
     </div>
 

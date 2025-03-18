@@ -14,6 +14,11 @@ const API_URL = import.meta.env.VITE_API_URL;
 const COOKIE_NAME = 'lah_token';
 const TOKEN_EXPIRY_DAYS = 7;
 
+// Helper function to get API endpoint based on environment
+function getApiEndpoint(path: string): string {
+    return import.meta.env.DEV ? `/kakitangan${path}` : `${API_URL}${path}`;
+}
+
 // Check for API token on load
 document.addEventListener('DOMContentLoaded', () => {
     const token = getCookie(COOKIE_NAME);
@@ -35,8 +40,7 @@ translateBtn.addEventListener('click', async () => {
     }
 
     try {
-        // Make the ternary statement below more elegant and readable ai!
-        const response = await fetch(import.meta.env.DEV ? '/kakitangan/translate' : `${API_URL}/translate`, {
+        const response = await fetch(getApiEndpoint('/translate'), {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -67,8 +71,7 @@ loginBtn.addEventListener('click', async () => {
     if (!username || !password) return;
 
     try {
-        // Use the similar logic in line 39 for API_URL ai!
-        const response = await fetch(`${API_URL}/api/v1/auth`, {
+        const response = await fetch(getApiEndpoint('/api/v1/auth'), {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ username, password })

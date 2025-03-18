@@ -4,7 +4,8 @@ const outputText = document.getElementById('outputText') as HTMLTextAreaElement;
 const translateBtn = document.getElementById('translateBtn') as HTMLButtonElement;
 const copyBtn = document.getElementById('copyBtn') as HTMLButtonElement;
 const authModal = document.getElementById('authModal') as HTMLDivElement;
-const apiKeyInput = document.getElementById('apiKey') as HTMLInputElement;
+const usernameInput = document.getElementById('username') as HTMLInputElement;
+const passwordInput = document.getElementById('password') as HTMLInputElement;
 const saveKeyBtn = document.getElementById('saveKeyBtn') as HTMLButtonElement;
 const closeModal = document.querySelector('.close') as HTMLSpanElement;
 
@@ -58,12 +59,28 @@ copyBtn.addEventListener('click', () => {
     document.execCommand('copy');
 });
 
-saveKeyBtn.addEventListener('click', () => {
-    const key = apiKeyInput.value.trim();
-    if (!key) return;
+saveKeyBtn.addEventListener('click', async () => {
+    const username = usernameInput.value.trim();
+    const password = passwordInput.value.trim();
+    
+    if (!username || !password) return;
 
-    setCookie(COOKIE_NAME, key, TOKEN_EXPIRY_DAYS);
-    authModal.style.display = 'none';
+    try {
+        const response = await fetch(`${API_URL}/auth/login`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ username, password })
+        });
+
+        if (!response.ok) throw new Error('Login failed');
+        
+        const { token } = await response.json();
+        setCookie(COOKIE_NAME, token, TOKEN_EXPIRY_DAYS);
+        authModal.style.display = 'none';
+    } catch (error) {
+        console.error('Authentication error:', error);
+        alert('Login failed. Please check credentials');
+    }
 });
 
 closeModal.addEventListener('click', () => {

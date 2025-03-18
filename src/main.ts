@@ -11,21 +11,13 @@ const closeModal = document.querySelector('.close') as HTMLSpanElement;
 
 // Constants
 const API_URL = import.meta.env.VITE_API_URL;
-const COOKIE_NAME = 'lah_token';
+const COOKIE_NAME = 'kt_token';
 const TOKEN_EXPIRY_DAYS = 7;
 
 // Helper function to get API endpoint based on environment
 function getApiEndpoint(path: string): string {
-    return import.meta.env.DEV ? `/kakitangan${path}` : `${API_URL}${path}`;
+    return import.meta.env.DEV ? `http://localhost${path}` : `${API_URL}${path}`;
 }
-
-// Check for API token on load
-document.addEventListener('DOMContentLoaded', () => {
-    const token = getCookie(COOKIE_NAME);
-    if (!token) {
-        authModal.style.display = 'block';
-    }
-});
 
 // Event Listeners
 translateBtn.addEventListener('click', async () => {
@@ -76,10 +68,8 @@ loginBtn.addEventListener('click', async () => {
             headers: {
                 'Content-Type': 'application/json'
             },
-            // CORS is handled by the server configuration
             body: JSON.stringify({ username, password })
         });
-        // 405 error when fetching from localhost, CORS missing allow origin, ai!
 
         if (!response.ok) throw new Error('Login failed');
 

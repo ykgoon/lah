@@ -35,6 +35,7 @@ translateBtn.addEventListener('click', async () => {
     }
 
     try {
+        // Make the ternary statement below more elegant and readable ai!
         const response = await fetch(import.meta.env.DEV ? '/kakitangan/translate' : `${API_URL}/translate`, {
             method: 'POST',
             headers: {
@@ -66,8 +67,7 @@ loginBtn.addEventListener('click', async () => {
     if (!username || !password) return;
 
     try {
-        console.log(API_URL);
-
+        // Use the similar logic in line 39 for API_URL ai!
         const response = await fetch(`${API_URL}/api/v1/auth`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },

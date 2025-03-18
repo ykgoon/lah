@@ -40,7 +40,7 @@ translateBtn.addEventListener('click', async () => {
     }
 
     try {
-        const response = await fetch(getApiEndpoint('/translate'), {
+        const response = await fetch(getApiEndpoint('/api/v1/infer'), {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -76,6 +76,7 @@ loginBtn.addEventListener('click', async () => {
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ username, password })
         });
+        // Fetch above runs into 405 error, CORS missing allow origin, ai!
 
         if (!response.ok) throw new Error('Login failed');
 

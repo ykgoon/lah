@@ -26,6 +26,11 @@ translateBtn.addEventListener('click', async () => {
         return;
     }
 
+    // Set loading state
+    translateBtn.disabled = true;
+    translateBtn.classList.add('loading');
+    translateBtn.textContent = 'Translating...';
+
     try {
         const response = await fetch(`${API_URL}/api/v1/infer`, {
             method: 'POST',
@@ -57,6 +62,11 @@ translateBtn.addEventListener('click', async () => {
     } catch (error) {
         console.error('Translation error:', error);
         outputText.value = 'Translation failed. Please try again.';
+    } finally {
+        // Reset button state
+        translateBtn.disabled = false;
+        translateBtn.classList.remove('loading');
+        translateBtn.textContent = 'Translate lah';
     }
 });
 

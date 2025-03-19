@@ -43,7 +43,7 @@ translateBtn.addEventListener('click', async () => {
                 messages: [
                     {
                         role: "system",
-                        content: "This is a passage written in broken English, translate it to Oxford English. Provide only the tranlated passage, no explanation necessary.",
+                        content: "This is a passage written in broken Malaysian English, translate it to Oxford English. Provide only the tranlated passage, no explanation necessary.",
                     },
                     {
                         role: "user",

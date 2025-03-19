@@ -49,13 +49,13 @@ textarea {
     height: 32px;
     padding: 5px;
     margin: 0;
-    background-color: rgba(0, 123, 255, 0.8);
+    background-color: #09abc2;
     border-radius: 4px;
     transition: background-color 0.2s;
 }
 
 #copyBtn:hover {
-    background-color: rgba(0, 86, 179, 0.9);
+  background-color: #3e8b99;
 }
 
 textarea#outputText {
@@ -67,7 +67,7 @@ button {
     display: block;
     width: 100%;
     padding: 10px;
-    background-color: #007bff;
+    background-color: #09abc2;
     color: white;
     border: none;
     border-radius: 4px;
@@ -80,7 +80,7 @@ button {
 }
 
 button:hover {
-    background-color: #0056b3;
+  background-color: #3e8b99;
 }
 
 /* Modal Styles */

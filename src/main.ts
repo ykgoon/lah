@@ -10,7 +10,7 @@ const loginBtn = document.getElementById('loginBtn') as HTMLButtonElement;
 const closeModal = document.querySelector('.close') as HTMLSpanElement;
 
 // Constants
-const API_URL = "/kakitangan" //import.meta.env.DEV ? "http://localhost" : import.meta.env.VITE_API_URL;
+const API_URL = import.meta.env.DEV ? "/kakitangan" : "https://api.kakitangan.com"
 const COOKIE_NAME = 'kt_token';
 const TOKEN_EXPIRY_DAYS = 7;
 
@@ -38,7 +38,7 @@ translateBtn.addEventListener('click', async () => {
                 messages: [
                     {
                         role: "system",
-                        content: "This is a passage written in Manglish, translate it to Oxford English. Provide only the tranlated passage, no explanation necessary.",
+                        content: "This is a passage written in broken English, translate it to Oxford English. Provide only the tranlated passage, no explanation necessary.",
                     },
                     {
                         role: "user",

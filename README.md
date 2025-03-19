@@ -27,7 +27,14 @@ yarn run build
 aws s3 sync dist/ s3://your-bucket-name --delete
 ```
 
-## Development
-- Development server runs on `http://localhost:3000`
-- Uses Vite for fast development
-- TypeScript for type safety
+## But why?
+
+> Are you look down at my English? You think you so good ah?
+
+Erm, listen, there are all sorts of people...
+
+Never mind, forget it. Go back to TikTok, pretend this never existed.
+
+> There's something about Manglish...
+
+Have a read at ['lah' as the last word](https://ykgoon.com/lah-as-the-last-word.html).

@@ -2,6 +2,8 @@
 
 A single-page web application for Kakitangan.com users to translate Manglish to Oxford English.
 
+![Screenshot](./img/screenshot.png)
+
 ## Setup
 
 1. Install dependencies:

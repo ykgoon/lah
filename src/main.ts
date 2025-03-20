@@ -10,7 +10,7 @@ const loginBtn = document.getElementById('loginBtn') as HTMLButtonElement;
 const closeModal = document.querySelector('.close') as HTMLSpanElement;
 
 // Constants
-const API_URL = import.meta.env.DEV ? "/kakitangan" : "https://app.staging.kakitangan.com"
+const API_URL = import.meta.env.DEV ? "https://app.staging.kakitangan.com" : "https://app.kakitangan.com"
 const COOKIE_NAME = 'kt_token';
 const TOKEN_EXPIRY_DAYS = 7;
 
